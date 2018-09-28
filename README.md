@@ -1,4 +1,4 @@
-# MEAN Stack Authentication
+# sednor-expense-manager
 
 To run, you just have MongoDB installed and running, and NodeJS installed.
 
