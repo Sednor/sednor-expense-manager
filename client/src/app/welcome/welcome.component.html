@@ -1,0 +1,55 @@
+<div class="container">
+  <h2 class="text-center">Sednor Expanse Manager</h2>
+  <div class="row justify-content-center mt-5">
+    <div class="btn-group btn-group-lg btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="signIn">
+      <label ngbButtonLabel class="btn btn-outline-dark">
+        <input ngbButton type="radio" [value]="true">
+        Sign In
+      </label>
+      <label ngbButtonLabel class="btn btn-outline-dark">
+        <input ngbButton type="radio" value="false">
+        Sign Up
+      </label>
+    </div>
+  </div>
+  <div class="row mt-5 justify-content-center" *ngIf="signIn === true; else signUp">
+    <div class="col-md-6">
+      <form (submit)="login()" [formGroup]="signInForm">
+        <div class="form-group">
+          <input type="email" class="form-control" formControlName="email" placeholder="Enter">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" formControlName="password" placeholder="Password">
+        </div>
+        <button type="submit" [disabled]="!signInForm.valid" class="btn btn-outline-dark btn-block">Sign In</button>
+      </form>
+    </div>
+  </div>
+  <ng-template #signUp>
+    <div class="row mt-5 justify-content-center">
+      <div class="col-md-6">
+        <form (submit)="register()" [formGroup]="signUpForm">
+          <div class="form-group">
+            <input type="email" class="form-control" formControlName="email" placeholder="Email">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input type="text" class="form-control" formControlName="firstName" placeholder="First name">
+            </div>
+            <div class="form-group col-md-6">
+              <input type="text" class="form-control" formControlName="lastName" placeholder="Last name">
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" formControlName="password" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm password">
+          </div>
+          <button type="submit" [disabled]="!signUpForm.valid" class="btn btn-outline-dark btn-block">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </ng-template>
+
+</div>
